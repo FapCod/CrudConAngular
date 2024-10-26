@@ -1,0 +1,51 @@
+<div class="mat-elevation-z2" style="width: 30%; padding: 30px; margin: 50px auto; display: flex; justify-content: center;">
+  <form [formGroup]="empleadoForm">
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput required formControlName="nombreCompleto">
+        <mat-error *ngIf="empleadoForm.get('nombreCompleto')?.hasError('required')">
+          Nombre Completo es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput required formControlName="correo">
+        <mat-error *ngIf="empleadoForm.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="empleadoForm.get('correo')?.hasError('email')">
+          Ingrese un correo válido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Sueldo</mat-label>
+        <input matInput type="number" required formControlName="sueldo">
+        <mat-error *ngIf="empleadoForm.get('sueldo')?.hasError('required')">
+          El sueldo es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Fecha Contrato</mat-label>
+        <input matInput type="date" required formControlName="fechaContrato">
+        <mat-error *ngIf="empleadoForm.get('fechaContrato')?.hasError('required')">
+          La fecha de contrato es obligatoria
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <button mat-flat-button color="primary" [disabled]="empleadoForm.invalid" (click)="guardar()">Guardar</button>
+      <button mat-flat-button color="warn" (click)="volver()" style="margin-left: 8px;">Volver</button>
+    </div>
+  </form>
+</div>
